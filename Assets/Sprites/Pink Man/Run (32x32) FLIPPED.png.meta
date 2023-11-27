@@ -1,28 +1,43 @@
 fileFormatVersion: 2
-guid: bfeede70efd14484683f5956b4f1194b
+guid: affaa6cf15d08734c959fac8dcdd4eb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7078261816480267791
-    second: Sprite Sheet - Blue Idle_0
+      213: 7166236263522030466
+    second: Run (32x32)_0
   - first:
-      213: -3938910030919452613
-    second: Sprite Sheet - Blue Idle_1
+      213: 2470319409956435798
+    second: Run (32x32)_1
   - first:
-      213: -99518741711876278
-    second: Sprite Sheet - Blue Idle_2
+      213: -4540918584354326388
+    second: Run (32x32)_2
   - first:
-      213: 2186122089364987773
-    second: Sprite Sheet - Blue Idle_3
+      213: -4455822056875728695
+    second: Run (32x32)_3
   - first:
-      213: -8839626087033448230
-    second: Sprite Sheet - Blue Idle_4
+      213: -5364790588639958657
+    second: Run (32x32)_4
   - first:
-      213: 8474644945731991183
-    second: Sprite Sheet - Blue Idle_5
+      213: -1512656188830553638
+    second: Run (32x32)_5
   - first:
-      213: -3195334159281410377
-    second: Sprite Sheet - Blue Idle_6
+      213: -2754230144694611447
+    second: Run (32x32)_6
+  - first:
+      213: -2419971920513260168
+    second: Run (32x32)_7
+  - first:
+      213: 1843850012483549754
+    second: Run (32x32)_8
+  - first:
+      213: 241620830004830169
+    second: Run (32x32)_9
+  - first:
+      213: -362971539341918764
+    second: Run (32x32)_10
+  - first:
+      213: 2178398316516280758
+    second: Run (32x32)_11
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -83,7 +98,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 0
+  applyGammaDecoding: 1
   cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
@@ -138,148 +153,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_0
+      name: Run L (32x32)_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 352
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f18b715166f4cd90800000000000000
-      internalID: -7078261816480267791
+      spriteID: cf29c0827376d8b4da780f1b66525bec
+      internalID: 7166236263522030466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_1
+      name: Run L (32x32)_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17df3ff5e0c90dc40b82af7bd81c5332
+      internalID: 2470319409956435798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run L (32x32)_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0260d953c3b86064a892dce8890e5dfe
+      internalID: -4540918584354326388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run L (32x32)_8
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b38b2d4323e2659c0800000000000000
-      internalID: -3938910030919452613
+      spriteID: 9ca7d76d640dde44fb0ae8db729f9c0c
+      internalID: -4455822056875728695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_2
+      name: Run L (32x32)_7
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02ce8ccf64a368f46acf7eb7585b50c2
+      internalID: -5364790588639958657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run L (32x32)_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef8648e6664cfc4c8f2a084559c5641
+      internalID: -1512656188830553638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run L (32x32)_5
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4f05cf4b307e9ef0800000000000000
-      internalID: -99518741711876278
+      spriteID: 09a9729bf9241c44eb62377320f0de31
+      internalID: -2754230144694611447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_3
+      name: Run L (32x32)_4
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a79dbc8803070634b8a84f7630b4b279
+      internalID: -2419971920513260168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run L (32x32)_3
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aabdc85215ac6f4db556cff0c671ff6
+      internalID: 1843850012483549754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Run L (32x32)_2
       rect:
         serializedVersion: 2
         x: 288
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7f1c3c257aa65e10800000000000000
-      internalID: 2186122089364987773
+      spriteID: 0fc65caf3a25eca4ea4ac99d52444916
+      internalID: 241620830004830169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_4
+      name: Run L (32x32)_1
       rect:
         serializedVersion: 2
-        x: 384
+        x: 320
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad8581f78e6535580800000000000000
-      internalID: -8839626087033448230
+      spriteID: ca5b7d40e7cb58a41a51ab99e30a7c19
+      internalID: -362971539341918764
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_5
+      name: Run L (32x32)_11
       rect:
         serializedVersion: 2
-        x: 480
+        x: 0
         y: 0
-        width: 96
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f863ae37dacfb9570800000000000000
-      internalID: 8474644945731991183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprite Sheet - Blue Idle_6
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7be2c510384e7a3d0800000000000000
-      internalID: -3195334159281410377
+      spriteID: eca92b040579b7f43a3be5aa077e7e57
+      internalID: 2178398316516280758
       vertices: []
       indices: 
       edges: []
@@ -295,13 +415,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Sprite Sheet - Blue Idle_3: 2186122089364987773
-      Sprite Sheet - Blue Idle_4: -8839626087033448230
-      Sprite Sheet - Blue Idle_5: 8474644945731991183
-      Sprite Sheet - Blue Idle_2: -99518741711876278
-      Sprite Sheet - Blue Idle_0: -7078261816480267791
-      Sprite Sheet - Blue Idle_1: -3938910030919452613
-      Sprite Sheet - Blue Idle_6: -3195334159281410377
+      Run L (32x32)_11: 2178398316516280758
+      Run L (32x32)_8: -4455822056875728695
+      Run L (32x32)_0: 7166236263522030466
+      Run L (32x32)_7: -5364790588639958657
+      Run L (32x32)_9: -4540918584354326388
+      Run L (32x32)_2: 241620830004830169
+      Run L (32x32)_6: -1512656188830553638
+      Run L (32x32)_4: -2419971920513260168
+      Run L (32x32)_3: 1843850012483549754
+      Run L (32x32)_1: -362971539341918764
+      Run L (32x32)_10: 2470319409956435798
+      Run L (32x32)_5: -2754230144694611447
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
