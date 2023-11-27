@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour
 {
 
     // inputs to speed & jump force
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
     [SerializeField] float jumpForce;
 
     float horizontal;
