@@ -21,15 +21,19 @@ public class playerMovement : MonoBehaviour
     // TODO: put spawnFacingLeft in separate player/level instantiation script (later)
     private Vector2 facingLeft;
 
+    // projectile stuff
+    public GameObject ProjectilePrefab;
+    public Transform launchOffset;
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        facingLeft = new Vector2(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+        facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
         if(spawnFacingLeft)
         {
-            gameObject.transform.localScale = facingLeft;
+            transform.localScale = facingLeft;
             isFacingLeft = true;
         }
     }
@@ -45,12 +49,12 @@ public class playerMovement : MonoBehaviour
         if (horizontalInput > 0 && isFacingLeft)
         {
             isFacingLeft = false;
-            flipPlayer();
+            flip(gameObject);
         }
         else if (horizontalInput < 0 && !isFacingLeft)
         {
             isFacingLeft = true;
-            flipPlayer();
+            flip(gameObject);
         }
 
         // jump mechanics
@@ -58,18 +62,29 @@ public class playerMovement : MonoBehaviour
         {
             playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
         }
+
+        if (Input.GetKeyDown("space"))
+        {
+            var projectile = Instantiate(ProjectilePrefab, launchOffset.position, transform.rotation);
+            if (isFacingLeft)
+            {
+                flip(projectile);
+                projectileBehavior ProjectileBehavior = projectile.GetComponent<projectileBehavior>();
+                ProjectileBehavior.shootLeft = true;
+            } 
+        }
     }
 
     // flips player according to isFacingLeft
-    void flipPlayer()
+    void flip(GameObject obj)
     {
         if (isFacingLeft)
         {
-            gameObject.transform.localScale = facingLeft;
+            obj.transform.localScale = facingLeft;
         }
         else if (!isFacingLeft)
         {
-            gameObject.transform.localScale = new Vector2(-gameObject.transform.localScale.x, gameObject.transform.localScale.y);
+            obj.transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
     }
 }
