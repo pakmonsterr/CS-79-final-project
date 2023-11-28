@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class projectileBehavior : MonoBehaviour
 {
-    public float projectileSpeed;
+    [SerializeField] float projectileSpeed;
+    [HideInInspector]
     public bool shootLeft = false;
 
     private Vector3 move;

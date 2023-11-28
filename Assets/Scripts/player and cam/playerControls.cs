@@ -2,28 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour
+public class playerControls : MonoBehaviour
 {
 
     // inputs to speed & jump force, ref to groundCheck script
-    public float moveSpeed;
-    public float jumpForce;
-    public groundCheck GroundCheck;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private groundCheck GroundCheck;
 
-    Rigidbody2D playerRB;
+    // other player stuff
+    [SerializeField] private playerHandler PlayerHandler;
+    private Rigidbody2D playerRB;
 
     private float horizontalInput;
 
     // sprite flipping stuff
     [HideInInspector]
     public bool isFacingLeft;
-    public bool spawnFacingLeft;
-    // TODO: put spawnFacingLeft in separate player/level instantiation script (later)
     private Vector2 facingLeft;
 
     // projectile stuff
-    public GameObject ProjectilePrefab;
-    public Transform launchOffset;
+    [SerializeField] private GameObject ProjectilePrefab;
+    [SerializeField] private Transform launchOffset;
+    [SerializeField] float shootCooldown;
+    private float shootCooldownTimer;
 
 
     // Start is called before the first frame update
@@ -31,7 +33,7 @@ public class playerMovement : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
-        if(spawnFacingLeft)
+        if(PlayerHandler.spawnFacingLeft)
         {
             transform.localScale = facingLeft;
             isFacingLeft = true;
@@ -41,9 +43,12 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
         // horizontal movement
+        horizontalInput = Input.GetAxis("Horizontal");
         playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
+
+        // increment shootCooldownTimer
+        shootCooldownTimer += Time.deltaTime;
 
         // flip sprite if needed
         if (horizontalInput > 0 && isFacingLeft)
@@ -63,8 +68,10 @@ public class playerMovement : MonoBehaviour
             playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
         }
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && (shootCooldownTimer > shootCooldown))
         {
+            shootCooldownTimer = 0.0f;
+            
             var projectile = Instantiate(ProjectilePrefab, launchOffset.position, transform.rotation);
             if (isFacingLeft)
             {

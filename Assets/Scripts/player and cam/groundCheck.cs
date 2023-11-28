@@ -13,7 +13,6 @@ public class groundCheck : MonoBehaviour
         {
             grounded = true;
         }
-        
 	}
 
     // when player stops colliding with any object tagged "ground", they're not grounded & un able to jump
@@ -23,6 +22,5 @@ public class groundCheck : MonoBehaviour
         {
             grounded = false;
         }
-        
 	}
 }
