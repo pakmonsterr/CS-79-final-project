@@ -13,11 +13,11 @@ public class projectileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move = new Vector3((shootLeft ? (-1 * projectileSpeed) : projectileSpeed) / 100, 0f, 0f);
+        move = new Vector3((shootLeft ? (-1 * projectileSpeed) : projectileSpeed) / 1000, 0f, 0f);
         transform.position = transform.position + move;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         Destroy(gameObject);
     }
 }
