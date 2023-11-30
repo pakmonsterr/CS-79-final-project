@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Projectile
+  - slimeBoundary
+  - Spikes
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,9 @@ public class coinBehavior : MonoBehaviour
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+
+        PlayerHandler = GameObject.Find("Player Handler").GetComponent<playerHandler>();
+        ItemHandler = GameObject.Find("Item Handler").GetComponent<itemHandler>();
     }
 
 
