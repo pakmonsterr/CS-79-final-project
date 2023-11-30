@@ -5,6 +5,7 @@ using UnityEngine;
 public class coinBehavior : MonoBehaviour
 {
     [SerializeField] private playerHandler PlayerHandler;
+    [SerializeField] private itemHandler ItemHandler;
 
     private Animator anim;
 
@@ -14,18 +15,20 @@ public class coinBehavior : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D collider) {
+    void OnTriggerEnter2D(Collider2D collider) 
+    {
         if(collider.gameObject.CompareTag("Player"))
         {
             PlayerHandler.playerCoins += 1;
+            StartCoroutine(collectAndDestroy());
         }
-        StartCoroutine(collectAndDestroy());
     }
 
     private IEnumerator collectAndDestroy()
     {
         anim.SetTrigger("collected");
-        yield return new WaitForSeconds(0.583f);
+        //Debug.Log(ItemHandler.slimeDeathDuration);
+        yield return new WaitForSeconds(ItemHandler.coinAnimDuration);
         Destroy(gameObject);
     }
 }
