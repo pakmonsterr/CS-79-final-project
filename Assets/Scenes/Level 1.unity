@@ -676,6 +676,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 802123999}
+  PlayerHandler: {fileID: 1418227880}
+  freezeCamera: 0
 --- !u!1001 &558233210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1360,6 +1362,7 @@ GameObject:
   - component: {fileID: 802124003}
   - component: {fileID: 802124005}
   - component: {fileID: 802124007}
+  - component: {fileID: 802124009}
   - component: {fileID: 802124002}
   - component: {fileID: 802124006}
   - component: {fileID: 802124008}
@@ -1410,7 +1413,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7166236263522030466, guid: cdb0cc8ca9aac2a4d84c6aa3c1cbf52b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1475,6 +1478,8 @@ MonoBehaviour:
   jumpForce: 55
   GroundCheck: {fileID: 802124005}
   PlayerHandler: {fileID: 1418227880}
+  playerRB: {fileID: 0}
+  freezeInput: 0
   isFacingLeft: 0
   ProjectilePrefab: {fileID: 1074050460472219094, guid: 9fbfe1e0bfa30c447a9f61fabdc4f8cf, type: 3}
   launchOffset: {fileID: 692045327}
@@ -1525,7 +1530,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GroundCheck: {fileID: 802124005}
-  animator: {fileID: 802124006}
+  anim: {fileID: 802124006}
+  DumbWaysToDie: {fileID: 802124009}
 --- !u!70 &802124008
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1542,6 +1548,23 @@ CapsuleCollider2D:
   m_Offset: {x: 0.03716421, y: -0.037164092}
   m_Size: {x: 1.2715816, y: 1.806746}
   m_Direction: 0
+--- !u!114 &802124009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802123999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c222e9124af0f5489cae1f021a2d0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerHandler: {fileID: 1418227880}
+  PlayerControls: {fileID: 802124003}
+  FollowPlayer: {fileID: 519420033}
+  Camera: {fileID: 519420028}
+  spikeDeath: 0
 --- !u!1001 &813879239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2044,10 +2067,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1209436036}
   - component: {fileID: 1209436037}
-  - component: {fileID: 1209436038}
   m_Layer: 0
   m_Name: Bottom Boundary
-  m_TagString: Untagged
+  m_TagString: bottomBoundary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2060,7 +2082,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209436035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.15, z: 0}
+  m_LocalPosition: {x: 0, y: -0.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2093,21 +2115,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 30, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1209436038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209436035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b079d7e19ff1e064ab132dfa25b22d42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerHandler: {fileID: 1418227880}
-  Player: {fileID: 802123999}
-  Camera: {fileID: 519420028}
 --- !u!1 &1252287144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,7 +2274,7 @@ PlatformEffector2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357237736}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2288,7 +2295,7 @@ TilemapCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4293,8 +4300,8 @@ Tilemap:
   - first: {x: 45, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -4303,8 +4310,8 @@ Tilemap:
   - first: {x: 46, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 8
-      m_TileSpriteIndex: 3
+      m_TileIndex: 5
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6634,21 +6641,21 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 267097ba14bab4922b0ac2c846c7dbaf, type: 2}
-  - m_RefCount: 91
+  - m_RefCount: 90
     m_Data: {fileID: 11400000, guid: 6ef706dab09654e71b8b1e7d871edf58, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: a00ca1fe6360440b1a81d324dac4a48b, type: 2}
   - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: ea83b207dc0c94e72afd2d3b0927f572, type: 2}
-  - m_RefCount: 166
+  - m_RefCount: 167
     m_Data: {fileID: 11400000, guid: 6e0b1b7dc2f934cb4adcfda7125357f3, type: 2}
-  - m_RefCount: 20
+  - m_RefCount: 21
     m_Data: {fileID: 11400000, guid: 896ef8df92f284062bc2c1b8acfb8fc0, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 17ff1f09c9c9b49c28ed359a7ee1baab, type: 2}
   - m_RefCount: 71
     m_Data: {fileID: 11400000, guid: c3a3b05b7dda242a6ac7507083be0f21, type: 2}
-  - m_RefCount: 7
+  - m_RefCount: 6
     m_Data: {fileID: 11400000, guid: 535773864530f442caee23fa437d9389, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 2974ed9c090704014a0367e483c857c2, type: 2}
@@ -6659,13 +6666,13 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 8
     m_Data: {fileID: 3020870990670601969, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
-  - m_RefCount: 91
+  - m_RefCount: 90
     m_Data: {fileID: 965125185638226396, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -8392802036319243359, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
-  - m_RefCount: 7
+  - m_RefCount: 6
     m_Data: {fileID: 3631698497521491291, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
-  - m_RefCount: 166
+  - m_RefCount: 167
     m_Data: {fileID: 8704577166008928185, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -4356087948441045522, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
@@ -6677,7 +6684,7 @@ Tilemap:
     m_Data: {fileID: 1918823624152674874, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
   - m_RefCount: 9
     m_Data: {fileID: 5714336816974921154, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
-  - m_RefCount: 20
+  - m_RefCount: 21
     m_Data: {fileID: 313651839404696180, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 2379953761323448013, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}

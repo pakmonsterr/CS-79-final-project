@@ -7,13 +7,16 @@ public class playerControls : MonoBehaviour
 
     // inputs to speed & jump force, ref to groundCheck script
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpForce;
+    public float jumpForce;
     [SerializeField] private groundCheck GroundCheck;
 
     // other player stuff
     [SerializeField] private playerHandler PlayerHandler;
-    private Rigidbody2D playerRB;
+    [HideInInspector]
+    public Rigidbody2D playerRB;
 
+    [HideInInspector]
+    public bool freezeInput;
     private float horizontalInput;
 
     // sprite flipping stuff
@@ -43,10 +46,6 @@ public class playerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // horizontal movement
-        horizontalInput = Input.GetAxis("Horizontal");
-        playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
-
         // increment shootCooldownTimer
         shootCooldownTimer += Time.deltaTime;
 
@@ -62,24 +61,33 @@ public class playerControls : MonoBehaviour
             flip(gameObject);
         }
 
-        // jump mechanics
-        if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && GroundCheck.grounded)
+        // ALL MOVEMENT
+        if (!freezeInput)
         {
-            playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
-        }
+            // horizontal movement
+            horizontalInput = Input.GetAxis("Horizontal");
+            playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
 
-        if (Input.GetKeyDown("space") && (shootCooldownTimer > shootCooldown))
-        {
-            shootCooldownTimer = 0.0f;
-            
-            var projectile = Instantiate(ProjectilePrefab, launchOffset.position, transform.rotation);
-            if (isFacingLeft)
+            // jump mechanics
+            if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && GroundCheck.grounded)
             {
-                flip(projectile);
-                projectileBehavior ProjectileBehavior = projectile.GetComponent<projectileBehavior>();
-                ProjectileBehavior.shootLeft = true;
-            } 
+                playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
+            }
+
+            if (Input.GetKeyDown("space") && (shootCooldownTimer > shootCooldown))
+            {
+                shootCooldownTimer = 0.0f;
+                
+                var projectile = Instantiate(ProjectilePrefab, launchOffset.position, transform.rotation);
+                if (isFacingLeft)
+                {
+                    flip(projectile);
+                    projectileBehavior ProjectileBehavior = projectile.GetComponent<projectileBehavior>();
+                    ProjectileBehavior.shootLeft = true;
+                } 
+            }
         }
+        
     }
 
     // flips player according to isFacingLeft

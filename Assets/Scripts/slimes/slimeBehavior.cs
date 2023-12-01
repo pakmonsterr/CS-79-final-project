@@ -31,13 +31,10 @@ public class slimeBehavior : MonoBehaviour
             PlayerHandler.remainingLives -= 1;
         }
         if(collider.gameObject.CompareTag("slimeBoundary"))
-        {
-            Debug.Log(slimeRB.velocity.x);
-           
+        {  
             // flip sprite if needed
             if (slimeRB.velocity.x > 0 && !isFacingLeft)
             {
-                Debug.Log("flip slime");
                 isFacingLeft = true;
                 flip(gameObject);
             }
