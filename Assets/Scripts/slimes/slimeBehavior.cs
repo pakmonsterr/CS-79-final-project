@@ -6,10 +6,12 @@ public class slimeBehavior : MonoBehaviour
 {
     [SerializeField] private playerHandler PlayerHandler;
     [SerializeField] private itemHandler ItemHandler;
+    [SerializeField] private GameObject parentObj;
 
     private Animator anim;
 
     private Rigidbody2D slimeRB;
+    [HideInInspector]
     public bool isFacingLeft;
     private Vector2 facingLeft;
     
@@ -26,11 +28,7 @@ public class slimeBehavior : MonoBehaviour
         {
             StartCoroutine(slimeShot());
         }
-        if(collider.gameObject.CompareTag("Player"))
-        {
-            PlayerHandler.remainingLives -= 1;
-        }
-        if(collider.gameObject.CompareTag("slimeBoundary"))
+        if(collider.gameObject.CompareTag("slimeBoundary") || collider.gameObject.CompareTag("Player"))
         {  
             // flip sprite if needed
             if (slimeRB.velocity.x > 0 && !isFacingLeft)
@@ -50,7 +48,7 @@ public class slimeBehavior : MonoBehaviour
     {
         anim.SetTrigger("Shot");
         yield return new WaitForSeconds(ItemHandler.slimeDeathDuration);
-        Destroy(gameObject);
+        Destroy(parentObj);
     }
 
     // flips slime according to isFacingLeft

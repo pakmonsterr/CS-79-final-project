@@ -10,6 +10,7 @@ TagManager:
   - Spikes
   - bottomBoundary
   - Slime
+  - Item
   layers:
   - Default
   - TransparentFX

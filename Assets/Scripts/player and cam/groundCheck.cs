@@ -13,21 +13,6 @@ public class groundCheck : MonoBehaviour
         // RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer);
         // Debug.Log(hit.collider);
         
-        if (Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer))
-        {
-            
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }
+        grounded = (Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer)) ? true : false;
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(transform.position, -transform.up * castDistance);
-    }
-
-
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class followPlayer : MonoBehaviour
 {
-    public GameObject player;
+    [SerializeField] private GameObject player;
     [SerializeField] private playerHandler PlayerHandler;
+    [SerializeField] private float cameraSpeed;
     public bool freezeCamera;
     private float x, y;
     
@@ -21,7 +22,7 @@ public class followPlayer : MonoBehaviour
         {
             x = (player.transform.position.x > 0) ? player.transform.position.x : gameObject.transform.position.x;
             
-            y = (player.transform.position.x == PlayerHandler.playerSpawn.transform.position.x) ? 0 : Mathf.Max(0, Mathf.Lerp(gameObject.transform.position.y, player.transform.position.y, 2 * Time.deltaTime));
+            y = (player.transform.position.x == PlayerHandler.playerSpawn.transform.position.x) ? 0 : Mathf.Max(0, Mathf.Lerp(gameObject.transform.position.y, player.transform.position.y, cameraSpeed * Time.deltaTime));
         
             gameObject.transform.position = new Vector3 (x, y, -1);
         }

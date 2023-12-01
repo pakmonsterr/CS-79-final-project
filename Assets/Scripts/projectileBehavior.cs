@@ -17,7 +17,10 @@ public class projectileBehavior : MonoBehaviour
         transform.position = transform.position + move;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        Destroy(gameObject);
+    private void OnTriggerEnter2D(Collider2D collider) {
+        if (!collider.gameObject.CompareTag("Item"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -9,14 +9,25 @@ public class dumbWaysToDie : MonoBehaviour
     [SerializeField] private followPlayer FollowPlayer;
     [SerializeField] private GameObject Camera;
 
+    [SerializeField] private float slimeHitCooldown;
+    private float timer;
+
+    [HideInInspector]
     public bool spikeDeath;
+    private bool hitSlime;
     private CapsuleCollider2D capCollider;
     
     // Start is called before the first frame update
     void Start()
     {
         spikeDeath = false;
+        hitSlime = false;
         capCollider = gameObject.GetComponent<CapsuleCollider2D>();
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
@@ -51,14 +62,30 @@ public class dumbWaysToDie : MonoBehaviour
             PlayerControls.playerRB.constraints = RigidbodyConstraints2D.FreezePositionX;
 
             PlayerHandler.remainingLives -= 1;
+
+            PlayerControls.playerRB.velocity = Vector3.zero;
             PlayerControls.playerRB.AddForce(new Vector2(0, PlayerControls.jumpForce * 10));
             
             spikeDeath = true; 
             capCollider.isTrigger = true;
         }
-        else if (collider.gameObject.CompareTag("Slime"))
+        else if (collider.gameObject.CompareTag("Slime") && (timer > slimeHitCooldown))
         {
-            Debug.Log("hit slime");
+            timer = 0f;
+            
+            StartCoroutine(tempControlFreeze());
+            Debug.Log(PlayerHandler.remainingLives);
+            PlayerHandler.remainingLives -= 1;
+
+            PlayerControls.playerRB.velocity = Vector3.zero;
+            PlayerControls.playerRB.AddForce(new Vector2(PlayerControls.jumpForce * -5, PlayerControls.jumpForce * 10));
         }
+    }
+
+    private IEnumerator tempControlFreeze()
+    {
+        PlayerControls.freezeInput = true;
+        yield return new WaitForSeconds(1.0f);
+        PlayerControls.freezeInput = false;
     }
 }

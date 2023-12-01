@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6793504322267590207}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5605611406239154656}
   m_Layer: 0
   m_Name: Coin animated
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
