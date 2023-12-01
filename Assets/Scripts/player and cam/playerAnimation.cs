@@ -19,14 +19,12 @@ public class playerAnimation : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log(GroundCheck.isGrounded());
-        
+    {   
         if (DumbWaysToDie.spikeDeath)
         {
             anim.SetTrigger("spikeDeath");
         }
-        else if (!GroundCheck.isGrounded())
+        else if (!GroundCheck.grounded)
         {
             // jump = 2
             anim.SetInteger("anim_state", 2);

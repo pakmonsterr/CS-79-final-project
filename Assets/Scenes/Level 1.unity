@@ -752,7 +752,7 @@ GameObject:
   - component: {fileID: 631722857}
   - component: {fileID: 631722856}
   - component: {fileID: 631722855}
-  - component: {fileID: 631722854}
+  - component: {fileID: 631722858}
   m_Layer: 6
   m_Name: Platform Tilemap
   m_TagString: Ground
@@ -775,25 +775,6 @@ Transform:
   m_Father: {fileID: 2107646558}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!251 &631722854
-PlatformEffector2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 631722852}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
 --- !u!19719996 &631722855
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -805,7 +786,7 @@ TilemapCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -1041,6 +1022,27 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!50 &631722858
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631722852}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 199b0584e3847a344a72608b876063eb, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &666375323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,8 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
-  boxSize: {x: 1.17, y: 0.06}
-  castDistance: 0.79
+  castDistance: 0.85
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -2621,7 +2622,7 @@ GameObject:
   - component: {fileID: 1493505125}
   - component: {fileID: 1493505124}
   - component: {fileID: 1493505126}
-  - component: {fileID: 1493505127}
+  - component: {fileID: 1493505128}
   m_Layer: 6
   m_Name: Floor Tilemap
   m_TagString: Ground
@@ -6748,32 +6749,34 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1493505122}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 199b0584e3847a344a72608b876063eb, type: 2}
   m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!251 &1493505127
-PlatformEffector2D:
+--- !u!50 &1493505128
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493505122}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RotationalOffset: 0
-  m_UseOneWay: 1
-  m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 199b0584e3847a344a72608b876063eb, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &1506059451
 GameObject:
   m_ObjectHideFlags: 0

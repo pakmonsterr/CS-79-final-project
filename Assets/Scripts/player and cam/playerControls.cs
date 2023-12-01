@@ -69,7 +69,7 @@ public class playerControls : MonoBehaviour
             playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
 
             // jump mechanics
-            if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && GroundCheck.isGrounded())
+            if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && GroundCheck.grounded)
             {
                 playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
             }

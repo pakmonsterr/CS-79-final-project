@@ -5,25 +5,28 @@ using UnityEngine;
 public class groundCheck : MonoBehaviour
 {
     public bool grounded;
-
-    [SerializeField] private Vector2 boxSize;
     [SerializeField] private float castDistance;
     [SerializeField] private LayerMask groundLayer;
 
-    public bool isGrounded()
+    void Update()
     {
-        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
+        // RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer);
+        // Debug.Log(hit.collider);
+        
+        if (Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer))
         {
-            return true;
+            
+            grounded = true;
         }
-        else{
-            return false;
+        else
+        {
+            grounded = false;
         }
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position-transform.up * castDistance, boxSize);
+        Gizmos.DrawRay(transform.position, -transform.up * castDistance);
     }
 
 
