@@ -9,6 +9,7 @@ TagManager:
   - slimeBoundary
   - Spikes
   - bottomBoundary
+  - Slime
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

@@ -753,7 +753,7 @@ GameObject:
   - component: {fileID: 631722856}
   - component: {fileID: 631722855}
   - component: {fileID: 631722854}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 666375330}
   m_Layer: 0
   m_Name: Blue Slime animated
-  m_TagString: Untagged
+  m_TagString: Slime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1460,7 +1460,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &802124003
 MonoBehaviour:
@@ -1497,6 +1497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
+  boxSize: {x: 1.17, y: 0.06}
+  castDistance: 0.79
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!95 &802124006
 Animator:
   serializedVersion: 4
@@ -1545,8 +1550,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03716421, y: -0.037164092}
-  m_Size: {x: 1.2715816, y: 1.806746}
+  m_Offset: {x: 0.03716421, y: 0.03035283}
+  m_Size: {x: 1.2715816, y: 1.6717122}
   m_Direction: 0
 --- !u!114 &802124009
 MonoBehaviour:
@@ -2617,7 +2622,7 @@ GameObject:
   - component: {fileID: 1493505124}
   - component: {fileID: 1493505126}
   - component: {fileID: 1493505127}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor Tilemap
   m_TagString: Ground
   m_Icon: {fileID: 0}

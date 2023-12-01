@@ -6,21 +6,25 @@ public class groundCheck : MonoBehaviour
 {
     public bool grounded;
 
-    // when player collides with any object tagged "ground", they're grounded & able to jump
-    void OnCollisionEnter2D( Collision2D collision)
-	{
-        if(collision.gameObject.CompareTag("Ground"))
-        {
-            grounded = true;
-        }
-	}
+    [SerializeField] private Vector2 boxSize;
+    [SerializeField] private float castDistance;
+    [SerializeField] private LayerMask groundLayer;
 
-    // when player stops colliding with any object tagged "ground", they're not grounded & un able to jump
-    void OnCollisionExit2D( Collision2D collision)
-	{
-        if(collision.gameObject.CompareTag("Ground"))
+    public bool isGrounded()
+    {
+        if (Physics2D.BoxCast(transform.position, boxSize, 0, -transform.up, castDistance, groundLayer))
         {
-            grounded = false;
+            return true;
         }
-	}
+        else{
+            return false;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position-transform.up * castDistance, boxSize);
+    }
+
+
 }

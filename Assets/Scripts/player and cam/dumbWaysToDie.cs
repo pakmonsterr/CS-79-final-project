@@ -33,7 +33,7 @@ public class dumbWaysToDie : MonoBehaviour
 
                 spikeDeath = false;
                 capCollider.isTrigger = false;
-                PlayerControls.playerRB.constraints = RigidbodyConstraints2D.None;
+                PlayerControls.playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                 PlayerControls.freezeInput = false;
                 FollowPlayer.freezeCamera = false;
@@ -55,6 +55,10 @@ public class dumbWaysToDie : MonoBehaviour
             
             spikeDeath = true; 
             capCollider.isTrigger = true;
+        }
+        else if (collider.gameObject.CompareTag("Slime"))
+        {
+            Debug.Log("hit slime");
         }
     }
 }
