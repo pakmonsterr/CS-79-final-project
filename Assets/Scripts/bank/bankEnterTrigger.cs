@@ -21,7 +21,7 @@ public class bankEnterTrigger : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             Debug.Log("enter bank");
-            SceneManager.LoadScene("Bank");
+            SceneManager.LoadScene("Bank_REAL");
         }
     }
     
