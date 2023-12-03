@@ -30,6 +30,9 @@ public class playerControls : MonoBehaviour
     [SerializeField] float shootCooldown;
     private float shootCooldownTimer;
 
+    // bank and shop stuff
+    [SerializeField] private bankEnterTrigger BankEnterTrigger;
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,7 +77,7 @@ public class playerControls : MonoBehaviour
                 playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
             }
 
-            if (Input.GetKeyDown("space") && (shootCooldownTimer > shootCooldown))
+            if (Input.GetKeyDown("space") && (shootCooldownTimer > shootCooldown) && !BankEnterTrigger.atBankDoor)
             {
                 shootCooldownTimer = 0.0f;
                 

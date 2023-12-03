@@ -18,7 +18,7 @@ public class projectileBehavior : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        if (!collider.gameObject.CompareTag("Item"))
+        if (collider.gameObject.CompareTag("Slime") || collider.gameObject.CompareTag("Ground") || collider.gameObject.CompareTag("rightBoundary"))
         {
             Destroy(gameObject);
         }

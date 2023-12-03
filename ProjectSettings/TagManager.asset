@@ -11,6 +11,7 @@ TagManager:
   - bottomBoundary
   - Slime
   - Item
+  - rightBoundary
   layers:
   - Default
   - TransparentFX
