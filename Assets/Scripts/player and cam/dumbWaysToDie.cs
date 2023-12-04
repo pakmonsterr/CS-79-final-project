@@ -40,8 +40,6 @@ public class dumbWaysToDie : MonoBehaviour
             }
             else if (spikeDeath)
             {
-                Debug.Log("hit boundary");
-
                 spikeDeath = false;
                 capCollider.isTrigger = false;
                 PlayerControls.playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -74,7 +72,6 @@ public class dumbWaysToDie : MonoBehaviour
             timer = 0f;
             
             StartCoroutine(tempControlFreeze());
-            Debug.Log(persistentData.Instance.remainingLives);
             persistentData.Instance.remainingLives -= 1;
 
             PlayerControls.playerRB.velocity = Vector3.zero;

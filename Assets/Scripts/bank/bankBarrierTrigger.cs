@@ -19,8 +19,10 @@ public class bankBarrierTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.CompareTag("Player"))
         {
-            Debug.Log("collided");
-            barrierRB.gravityScale = 2;
+            if (barrierRB != null)
+            {
+                barrierRB.gravityScale = 2;
+            }
         }
     }
 

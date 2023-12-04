@@ -10,9 +10,6 @@ public class groundCheck : MonoBehaviour
 
     void Update()
     {
-        // RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer);
-        // Debug.Log(hit.collider);
-        
         grounded = (Physics2D.Raycast(transform.position, -transform.up, castDistance, groundLayer)) ? true : false;
     }
 }

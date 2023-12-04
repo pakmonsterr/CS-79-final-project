@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class coinBehavior : MonoBehaviour
 {
-    [SerializeField] private itemHandler ItemHandler;
-
+    private itemHandler ItemHandler;
+    private static persistentData PersistentData;
     private Animator anim;
+    private string coinName;
 
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
 
         ItemHandler = GameObject.Find("Item Handler").GetComponent<itemHandler>();
+        
+        coinName = gameObject.transform.parent.name;
+        
+        if(persistentData.Instance.coinCollection.ContainsKey(coinName))
+        {
+            if (persistentData.Instance.coinCollection[coinName] == true)
+            {
+                Destroy(gameObject.transform.parent.gameObject);
+                return;
+            }
+        }
+        else
+        {
+            persistentData.Instance.coinCollection.Add(coinName, false);
+        }
     }
 
 
@@ -27,8 +43,12 @@ public class coinBehavior : MonoBehaviour
 
     private IEnumerator collectAndDestroy()
     {
+        if(persistentData.Instance.coinCollection.ContainsKey(coinName))
+        {
+            persistentData.Instance.coinCollection[coinName] = true;
+        }
+        
         anim.SetTrigger("collected");
-        //Debug.Log(ItemHandler.slimeDeathDuration);
         yield return new WaitForSeconds(ItemHandler.coinAnimDuration);
         Destroy(gameObject);
     }
