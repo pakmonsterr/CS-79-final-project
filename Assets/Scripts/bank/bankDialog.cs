@@ -19,7 +19,7 @@ public class bankDialog : MonoBehaviour
     {
         index = 0;
         inChoiceState = false;
-        dialog = new string[] {"Hello", "How are you?", "Goodbye", "Choose: Credit Card or Debit Card"};
+        dialog = new string[] {"Welcome to the bank! Now that you’ve collected some coins, it will be helpful to be able to spend them without having to carry the actual coins around everywhere you go.", "Debit cards and credit cards are two helpful options for making purchases on the go, but they have major differences as well.", "Debit cards pull money directly from your bank account. This means that you can spend only as much as you currently have in your account—no more.", "This is helpful if you want to make sure you never spend more than you have, but may be limiting if you want to make large purchases to pay off later", "Credit cards don’t pull funds from your own bank account, but instead allow you to borrow a set amount of the bank’s money (this amount is called your “line of credit”)—which you must then pay back at the end of each level", "This is helpful for making large purchases that you know you can pay off later, but can lead you to accidentally spend more than you end up being able to repay", "Choose: Credit Card or Debit Card"};
         ShowDialog();
     }
 
