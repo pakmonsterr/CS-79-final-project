@@ -12,6 +12,11 @@ public class persistentData : MonoBehaviour
     public int playerCoins;
     public bool bankVisited;
 
+    // coin & slime collection data
+    public Dictionary<string, bool> coinCollection = new Dictionary<string, bool>();
+
+    public Dictionary<string, bool> slimesKilled = new Dictionary<string, bool>();
+
     // persistent data shit
     private void Awake()
     {

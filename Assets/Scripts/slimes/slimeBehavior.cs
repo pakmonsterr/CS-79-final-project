@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class slimeBehavior : MonoBehaviour
 {
-    [SerializeField] private playerHandler PlayerHandler;
-    [SerializeField] private itemHandler ItemHandler;
-    [SerializeField] private GameObject parentObj;
+    private playerHandler PlayerHandler;
+    private itemHandler ItemHandler;
+    private GameObject parentObj;
+    private string slimeName;
 
     private Animator anim;
 
     private Rigidbody2D slimeRB;
-    [HideInInspector]
-    public bool isFacingLeft;
+    [HideInInspector] public bool isFacingLeft;
     private Vector2 facingLeft;
     
     void Start()
     {
+        ItemHandler = GameObject.Find("Item Handler").GetComponent<itemHandler>();
+        PlayerHandler = GameObject.Find("Player Handler").GetComponent<playerHandler>();
+        parentObj = gameObject.transform.parent.gameObject;
+        
         anim = gameObject.GetComponent<Animator>();
         slimeRB = GetComponent<Rigidbody2D>();
         facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
+    
+        slimeName = gameObject.transform.parent.name;
+        
+        if(persistentData.Instance.slimesKilled.ContainsKey(slimeName))
+        {
+            if (persistentData.Instance.slimesKilled[slimeName] == true)
+            {
+                Destroy(parentObj);
+                return;
+            }
+        }
+        else
+        {
+            persistentData.Instance.slimesKilled.Add(slimeName, false);
+        }
     }
     
     void OnTriggerEnter2D(Collider2D collider)
@@ -46,6 +65,11 @@ public class slimeBehavior : MonoBehaviour
 
     private IEnumerator slimeShot()
     {
+        if(persistentData.Instance.slimesKilled.ContainsKey(slimeName))
+        {
+            persistentData.Instance.slimesKilled[slimeName] = true;
+        }
+        
         anim.SetTrigger("Shot");
         yield return new WaitForSeconds(ItemHandler.slimeDeathDuration);
         Destroy(parentObj);
