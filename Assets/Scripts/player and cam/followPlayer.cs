@@ -9,6 +9,7 @@ public class followPlayer : MonoBehaviour
     [SerializeField] private float cameraSpeed;
     public bool freezeCamera;
     private float x, y;
+    private bool atMapEnd;
     
     void Start()
     {
@@ -20,9 +21,11 @@ public class followPlayer : MonoBehaviour
     {
         if (!freezeCamera)
         {
-            x = (player.transform.position.x > 0) ? player.transform.position.x : gameObject.transform.position.x;
+            atMapEnd = (player.transform.position.x == PlayerHandler.initialPlayerSpawn.transform.position.x) || player.transform.position.x > 219f;
             
-            y = (player.transform.position.x == PlayerHandler.initialPlayerSpawn.transform.position.x) ? 0 : Mathf.Max(0, Mathf.Lerp(gameObject.transform.position.y, player.transform.position.y, cameraSpeed * Time.deltaTime));
+            x = (player.transform.position.x > 0) ? (atMapEnd ? 219f : player.transform.position.x) : gameObject.transform.position.x;
+            
+            y = (atMapEnd) ? 0 : Mathf.Max(0, Mathf.Lerp(gameObject.transform.position.y, player.transform.position.y, cameraSpeed * Time.deltaTime));
         
             gameObject.transform.position = new Vector3 (x, y, -1);
         }

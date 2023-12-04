@@ -12,8 +12,9 @@ public class slimeBehavior : MonoBehaviour
     private Animator anim;
 
     private Rigidbody2D slimeRB;
-    [HideInInspector] public bool isFacingLeft;
-    private Vector2 facingLeft;
+    public bool isFacingLeft;
+
+    [SerializeField] private GameObject coinPrefab;
     
     void Start()
     {
@@ -23,8 +24,7 @@ public class slimeBehavior : MonoBehaviour
         
         anim = gameObject.GetComponent<Animator>();
         slimeRB = GetComponent<Rigidbody2D>();
-        facingLeft = new Vector2(-transform.localScale.x, transform.localScale.y);
-    
+        
         slimeName = gameObject.transform.parent.name;
         
         if(persistentData.Instance.slimesKilled.ContainsKey(slimeName))
@@ -47,18 +47,15 @@ public class slimeBehavior : MonoBehaviour
         {
             StartCoroutine(slimeShot());
         }
-        if(collider.gameObject.CompareTag("slimeBoundary") || collider.gameObject.CompareTag("Player"))
+        if(collider.gameObject.CompareTag("slimeBoundary") || collider.gameObject.CompareTag("Player"));
         {  
-            // flip sprite if needed
             if (slimeRB.velocity.x > 0 && !isFacingLeft)
             {
                 isFacingLeft = true;
-                flip(gameObject);
             }
             else if (slimeRB.velocity.x < 0 && isFacingLeft)
             {
                 isFacingLeft = false;
-                flip(gameObject);
             }
         }
 	}
@@ -69,22 +66,14 @@ public class slimeBehavior : MonoBehaviour
         {
             persistentData.Instance.slimesKilled[slimeName] = true;
         }
-        
-        anim.SetTrigger("Shot");
-        yield return new WaitForSeconds(ItemHandler.slimeDeathDuration);
-        Destroy(parentObj);
-    }
 
-    // flips slime according to isFacingLeft
-    void flip(GameObject obj)
-    {
-        if (isFacingLeft)
-        {
-            obj.transform.localScale = facingLeft;
-        }
-        else if (!isFacingLeft)
-        {
-            obj.transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-        }
+        anim.SetTrigger("Shot");
+        yield return new WaitForSeconds(ItemHandler.slimeDeathDuration / 2);
+
+        var coin = Instantiate(coinPrefab, transform.position, transform.rotation);
+        coin.name = "C" + Random.Range(0f, 100f).ToString();
+        yield return new WaitForSeconds(ItemHandler.slimeDeathDuration / 2);
+
+        Destroy(parentObj);
     }
 }

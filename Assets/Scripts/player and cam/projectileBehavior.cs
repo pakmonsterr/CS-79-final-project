@@ -9,11 +9,15 @@ public class projectileBehavior : MonoBehaviour
     public bool shootLeft = false;
 
     private Vector3 move;
+    private Rigidbody2D projectileRB;
 
-    // Update is called once per frame
+    void Start()
+    {
+        projectileRB = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
-        move = new Vector3((shootLeft ? (-1 * projectileSpeed) : projectileSpeed) / 1000, 0f, 0f);
+        projectileRB.velocity = new Vector2((shootLeft ? (-1 * projectileSpeed) : projectileSpeed), projectileRB.velocity.y);
         transform.position = transform.position + move;
     }
 
