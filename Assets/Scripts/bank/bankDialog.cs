@@ -83,11 +83,11 @@ public class bankDialog : MonoBehaviour
     void HighlightChoice()
     {
         // Remove previous highlighting
-        string text = ChoiceTextMeshPro.text.Replace("<color=yellow>", "").Replace("</color>", "");
+        string text = ChoiceTextMeshPro.text.Replace("<color=red>", "").Replace("</color>", "").Replace("<u>", "").Replace("</u>", "");
         // Split the text into lines
         string[] lines = text.Split('\n');
         // Highlight the current choice
-        lines[choiceIndex] = "<color=yellow>" + lines[choiceIndex] + "</color>";
+        lines[choiceIndex] = "<color=red><u>" + lines[choiceIndex] + "</u></color>";
         // Join the lines back together
         ChoiceTextMeshPro.text = string.Join("\n", lines);
     }
