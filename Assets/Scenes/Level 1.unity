@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e048815d2543b054a90d2fe0e057f6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHandler: {fileID: 2011597791}
   remainingLives: 0
   playerCoins: 0
   bankVisited: 0
@@ -905,6 +906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrierAnim: {fileID: 1506059453}
   raiseBarrierAnimTime: 2
+  barrier: {fileID: 1506059451}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,8 @@ public class levelHandler : MonoBehaviour
     {
         if (persistentData.Instance.remainingLives == 0)
         {
-            gameOver();
+            Debug.Log("GAME OVER.");
+            PlayerHandler.resetPlayer();
         }
 
         // REMOVE FOR FINAL (only for dev purposes while emmet works on bank)
@@ -22,11 +23,5 @@ public class levelHandler : MonoBehaviour
             Debug.Log("reloading scene");
             SceneManager.LoadScene("Level 1");
         }
-    }
-
-    void gameOver()
-    {
-        Debug.Log("GAME OVER.");
-        PlayerHandler.resetPlayer();
     }
 }
