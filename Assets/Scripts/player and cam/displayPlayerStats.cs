@@ -10,8 +10,23 @@ public class displayPlayerStats : MonoBehaviour
     
     // Update is called once per frame
     void Update()
+{
+    if (Lives != null && persistentData.Instance != null)
     {
-        Lives.GetComponent<TextMesh>().text = persistentData.Instance.remainingLives.ToString();
-        Coins.GetComponent<TextMesh>().text = persistentData.Instance.playerCoins.ToString();
+        TextMesh livesTextMesh = Lives.GetComponent<TextMesh>();
+        if (livesTextMesh != null)
+        {
+            livesTextMesh.text = persistentData.Instance.remainingLives.ToString();
+        }
     }
+
+    if (Coins != null && persistentData.Instance != null)
+    {
+        TextMesh coinsTextMesh = Coins.GetComponent<TextMesh>();
+        if (coinsTextMesh != null)
+        {
+            coinsTextMesh.text = persistentData.Instance.playerCoins.ToString();
+        }
+    }
+}
 }
