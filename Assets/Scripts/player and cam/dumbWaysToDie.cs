@@ -9,19 +9,19 @@ public class dumbWaysToDie : MonoBehaviour
     [SerializeField] private followPlayer FollowPlayer;
     [SerializeField] private GameObject Camera;
 
+    private static persistentData PersistentData;
+
     [SerializeField] private float slimeHitCooldown;
     private float timer;
 
     [HideInInspector]
     public bool spikeDeath;
-    private bool hitSlime;
     private CapsuleCollider2D capCollider;
     
     // Start is called before the first frame update
     void Start()
     {
         spikeDeath = false;
-        hitSlime = false;
         capCollider = gameObject.GetComponent<CapsuleCollider2D>();
     }
 
@@ -36,7 +36,7 @@ public class dumbWaysToDie : MonoBehaviour
             if (!spikeDeath)
             {
                 Debug.Log("died by falling");
-                PlayerHandler.remainingLives -= 1;
+                persistentData.Instance.remainingLives -= 1;
             }
             else if (spikeDeath)
             {
@@ -61,7 +61,7 @@ public class dumbWaysToDie : MonoBehaviour
             FollowPlayer.freezeCamera = true;
             PlayerControls.playerRB.constraints = RigidbodyConstraints2D.FreezePositionX;
 
-            PlayerHandler.remainingLives -= 1;
+            persistentData.Instance.remainingLives -= 1;
 
             PlayerControls.playerRB.velocity = Vector3.zero;
             PlayerControls.playerRB.AddForce(new Vector2(0, PlayerControls.jumpForce * 10));
@@ -74,8 +74,8 @@ public class dumbWaysToDie : MonoBehaviour
             timer = 0f;
             
             StartCoroutine(tempControlFreeze());
-            Debug.Log(PlayerHandler.remainingLives);
-            PlayerHandler.remainingLives -= 1;
+            Debug.Log(persistentData.Instance.remainingLives);
+            persistentData.Instance.remainingLives -= 1;
 
             PlayerControls.playerRB.velocity = Vector3.zero;
             PlayerControls.playerRB.AddForce(new Vector2(PlayerControls.jumpForce * -5, PlayerControls.jumpForce * 10));

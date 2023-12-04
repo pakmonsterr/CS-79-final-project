@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class coinBehavior : MonoBehaviour
 {
-    [SerializeField] private playerHandler PlayerHandler;
     [SerializeField] private itemHandler ItemHandler;
 
     private Animator anim;
@@ -13,7 +12,6 @@ public class coinBehavior : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
 
-        PlayerHandler = GameObject.Find("Player Handler").GetComponent<playerHandler>();
         ItemHandler = GameObject.Find("Item Handler").GetComponent<itemHandler>();
     }
 
@@ -22,7 +20,7 @@ public class coinBehavior : MonoBehaviour
     {
         if(collider.gameObject.CompareTag("Player"))
         {
-            PlayerHandler.playerCoins += 1;
+            persistentData.Instance.playerCoins += 1;
             StartCoroutine(collectAndDestroy());
         }
     }
