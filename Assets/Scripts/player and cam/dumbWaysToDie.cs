@@ -50,7 +50,7 @@ public class dumbWaysToDie : MonoBehaviour
                 FollowPlayer.freezeCamera = false;
             }
 
-            transform.position = PlayerHandler.playerSpawn.transform.position;
+            transform.position = PlayerHandler.initialPlayerSpawn.transform.position;
             Camera.transform.position = new Vector3 (0, 0, -1);
         }
         else if (collider.gameObject.CompareTag("Spikes") && !spikeDeath)

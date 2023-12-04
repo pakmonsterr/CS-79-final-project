@@ -9,6 +9,7 @@ public class persistentData : MonoBehaviour
     // persistent player stats
     public int remainingLives;
     public int playerCoins;
+    public bool bankVisited;
 
     // persistent data shit
     private void Awake()

@@ -7,14 +7,6 @@ public class levelHandler : MonoBehaviour
 {
     [SerializeField] private playerHandler PlayerHandler;
     private static persistentData PersistentData;
-
-    public bool bankVisited;
-
-    void Start()
-    {
-        bankVisited = false;
-    }
-    
     
     // Update is called once per frame
     void Update()
@@ -25,8 +17,9 @@ public class levelHandler : MonoBehaviour
         }
 
         // REMOVE FOR FINAL (only for dev purposes while emmet works on bank)
-        if (bankVisited)
+        if (persistentData.Instance.bankVisited)
         {
+            Debug.Log("reloading scene");
             SceneManager.LoadScene("Level 1");
         }
     }

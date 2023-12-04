@@ -9,11 +9,29 @@ public class playerHandler : MonoBehaviour
     
     public bool spawnFacingLeft;
 
-    public Transform playerSpawn;
+    public Transform initialPlayerSpawn;
+
+    public Transform bankPlayerSpawn;
 
     [SerializeField] private int startingLives;
+    [SerializeField] private GameObject Player;
+    [SerializeField] private bankBarrierTrigger BankBarrierTrigger;
 
     private static persistentData PersistentData;
+    
+    void Start() 
+    {
+        if (persistentData.Instance.bankVisited)
+        {
+            Player.transform.position = bankPlayerSpawn.position;
+            persistentData.Instance.bankVisited = false;
+            StartCoroutine(BankBarrierTrigger.raiseBarrier());
+        }
+        else
+        {
+            Player.transform.position = initialPlayerSpawn.position;
+        }
+    }
     
     public void resetPlayer()
     {

@@ -18,7 +18,7 @@ public class bankEnterTrigger : MonoBehaviour
 
     private void Update() 
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space") && atBankDoor)
         {
             Debug.Log("enter bank");
             SceneManager.LoadScene("Bank_REAL");
