@@ -17,6 +17,9 @@ public class dumbWaysToDie : MonoBehaviour
     [HideInInspector]
     public bool spikeDeath;
     private CapsuleCollider2D capCollider;
+
+    [SerializeField] private GameObject postBankSpawn;
+    [SerializeField] private GameObject postShopSpawn;
     
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,7 @@ public class dumbWaysToDie : MonoBehaviour
                 FollowPlayer.freezeCamera = false;
             }
 
-            transform.position = PlayerHandler.initialPlayerSpawn.transform.position;
+            transform.position = getSpawnPos();
             Camera.transform.position = new Vector3 (0, 0, -1);
         }
         else if (collider.gameObject.CompareTag("Spikes") && !spikeDeath)
@@ -84,5 +87,21 @@ public class dumbWaysToDie : MonoBehaviour
         PlayerControls.freezeInput = true;
         yield return new WaitForSeconds(1.0f);
         PlayerControls.freezeInput = false;
+    }
+
+    private Vector3 getSpawnPos()
+    {
+        if (persistentData.Instance.shopCheckpoint)
+        {
+            return postShopSpawn.transform.position;
+        }
+        else if (persistentData.Instance.bankCheckpoint)
+        {
+            return postBankSpawn.transform.position;
+        }
+        else
+        {
+            return PlayerHandler.initialPlayerSpawn.transform.position;
+        }
     }
 }

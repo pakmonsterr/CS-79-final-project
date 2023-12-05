@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class bankEnterTrigger : MonoBehaviour
+public class enterTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject entrancePopup;
 
     [HideInInspector]
-    public bool atBankDoor;
+    public bool atDoor;
+    [SerializeField] private string sceneToLoad;
     
     private void Start() 
     {
         entrancePopup.SetActive(false);
-        atBankDoor = false;
+        atDoor = false;
     }
 
     private void Update() 
     {
-        if (Input.GetKeyDown("space") && atBankDoor)
+        if (Input.GetKeyDown("space") && atDoor)
         {
-            Debug.Log("enter bank");
-            SceneManager.LoadScene("Bank_REAL");
+            Debug.Log("enter " + sceneToLoad);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
     
@@ -29,7 +30,7 @@ public class bankEnterTrigger : MonoBehaviour
         if(collider.gameObject.CompareTag("Player"))
         {
             entrancePopup.SetActive(true);
-            atBankDoor = true;
+            atDoor = true;
         }
     }
 
@@ -37,7 +38,7 @@ public class bankEnterTrigger : MonoBehaviour
         if(collider.gameObject.CompareTag("Player"))
         {
             entrancePopup.SetActive(false);
-            atBankDoor = false;
+            atDoor = false;
         }
     }
 }

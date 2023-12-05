@@ -23,5 +23,10 @@ public class levelHandler : MonoBehaviour
             Debug.Log("reloading scene");
             SceneManager.LoadScene("Level 1");
         }
+        if (persistentData.Instance.shopVisited)
+        {
+            Debug.Log("reloading scene");
+            SceneManager.LoadScene("Level 1");
+        }
     }
 }
