@@ -20,14 +20,14 @@ public class bankDialog : MonoBehaviour
         index = 0;
         inChoiceState = false;
         dialog = new string[] {
-            "Welcome to the bank! Now that you’ve collected some coins, it will be helpful to be able to spend them without having to carry the actual coins around everywhere you go.",
-            "Debit cards and credit cards are two helpful options for making purchases on the go, but they have major differences as well.",
-            "Debit cards pull money directly from your bank account. This means that you can spend only as much as you currently have in your account—no more.",
-            "This is helpful if you want to make sure you never spend more than you have, but may be limiting if you want to make large purchases to pay off later.",
-            "Credit cards don’t pull funds from your own bank account, but instead allow you to borrow a set amount of the bank’s money (this amount is called your “line of credit”)—which you must then pay back at the end of each level.",
-            "This is helpful for making large purchases that you know you can pay off later, but can lead you to accidentally spend more than you end up being able to repay.",
-            "This bank offers credit cards with the following terms: \n\nLine of credit: 10 coins (this means you can borrow up to 10 coins during each level) \n\nPenalty for missed payment: 2 lost lives (this means you will lose 2 lives if you fail to pay off your credit card by the end of the level)",
-            "Choose: Credit Card or Debit Card"
+            "Welcome to the bank! Now that you’ve collected some coins, it will be helpful to be able to spend them without having to carry the actual coins around everywhere you go. \n\n[spacebar to continue]",
+            "Debit cards and credit cards are two helpful options for making purchases on the go, but they have major differences as well. \n\n[spacebar to continue]",
+            "Debit cards pull money directly from your bank account. This means that you can spend only as much as you currently have in your account—no more. \n\n[spacebar to continue]",
+            "This is helpful if you want to make sure you never spend more than you have, but may be limiting if you want to make large purchases to pay off later. \n\n[spacebar to continue]",
+            "Credit cards don’t pull funds from your own bank account, but instead allow you to borrow a set amount of the bank’s money (this amount is called your “line of credit”)—which you must then pay back at the end of each level. \n\n[spacebar to continue]",
+            "This is helpful for making large purchases that you know you can pay off later, but can lead you to accidentally spend more than you end up being able to repay. \n\n[spacebar to continue]",
+            "This bank offers credit cards with the following terms: \n\nLine of credit: 10 coins (this means you can borrow up to 10 coins during each level) \n\nPenalty for missed payment: 2 lost lives (this means you will lose 2 lives if you fail to pay off your credit card by the end of the level) \n\n[spacebar to continue]",
+            "Choose your card: \n\nCredit Card or Debit Card \n\n[spacebar to select]"
         };
         ShowDialog();
     }
@@ -65,7 +65,7 @@ public class bankDialog : MonoBehaviour
         if (index < dialog.Length)
         {
             DialogTextMeshPro.text = dialog[index]; // Show the current dialog
-            if (dialog[index].Contains("Choose:"))
+            if (dialog[index].Contains("Choose your card:"))
             {
                 inChoiceState = true; // Enter choice state
                 choiceIndex = 0; // Reset the choice index
