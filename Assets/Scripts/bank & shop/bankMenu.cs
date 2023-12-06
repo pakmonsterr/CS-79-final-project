@@ -41,3 +41,4 @@ public class bankMenu : MonoBehaviour
         Debug.Log("Info clicked");
     }
 }
+
