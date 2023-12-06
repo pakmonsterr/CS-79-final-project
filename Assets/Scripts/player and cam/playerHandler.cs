@@ -16,8 +16,7 @@ public class playerHandler : MonoBehaviour
 
     [SerializeField] private int startingLives;
     [SerializeField] private GameObject Player;
-    [SerializeField] private barrierTrigger BankBarrierTrigger;
-    [SerializeField] private barrierTrigger ShopBarrierTrigger;
+    [SerializeField] private barrierTrigger BarrierTrigger;
 
     private static persistentData PersistentData;
     
@@ -27,15 +26,13 @@ public class playerHandler : MonoBehaviour
         {
             Player.transform.position = bankPlayerSpawn.position;
             persistentData.Instance.bankVisited = false;
-            persistentData.Instance.bankCheckpoint = true;
-            StartCoroutine(BankBarrierTrigger.raiseBarrier());
+            BarrierTrigger.raiseBarrier();
         }
         else if (persistentData.Instance.shopVisited)
         {
             Player.transform.position = shopPlayerSpawn.position;
             persistentData.Instance.shopVisited = false;
-            persistentData.Instance.shopCheckpoint = true;
-            StartCoroutine(ShopBarrierTrigger.raiseBarrier());
+            BarrierTrigger.raiseBarrier();
         }
         else
         {

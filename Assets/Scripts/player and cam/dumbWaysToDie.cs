@@ -78,19 +78,21 @@ public class dumbWaysToDie : MonoBehaviour
             persistentData.Instance.remainingLives -= 1;
 
             PlayerControls.playerRB.velocity = Vector3.zero;
-            PlayerControls.playerRB.AddForce(new Vector2(PlayerControls.jumpForce * -5, PlayerControls.jumpForce * 10));
+            PlayerControls.playerRB.AddForce(new Vector2(PlayerControls.jumpForce * -4, PlayerControls.jumpForce * 7));
         }
     }
 
     private IEnumerator tempControlFreeze()
     {
         PlayerControls.freezeInput = true;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         PlayerControls.freezeInput = false;
     }
 
     private Vector3 getSpawnPos()
     {
+        FollowPlayer.droppingInRespawn = true;
+
         if (persistentData.Instance.shopCheckpoint)
         {
             return postShopSpawn.transform.position;

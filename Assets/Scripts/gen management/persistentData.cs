@@ -5,7 +5,7 @@ using UnityEngine;
 public class persistentData : MonoBehaviour
 {
     public static persistentData Instance;
-    [SerializeField] private playerHandler PlayerHandler;
+    public playerHandler PlayerHandler;
 
     // persistent player stats
     public int remainingLives;
@@ -34,5 +34,5 @@ public class persistentData : MonoBehaviour
 
         PlayerHandler.resetPlayer();
     }
-        
+
 }

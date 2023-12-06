@@ -7,6 +7,7 @@ public class barrierTrigger : MonoBehaviour
     [SerializeField] private Animator barrierAnim;
     [SerializeField] private float raiseBarrierAnimTime;
     [SerializeField] private GameObject barrier;
+    [SerializeField] private PhysicsMaterial2D solidMaterial;
     private Rigidbody2D barrierRB;
     private static persistentData PersistentData;
     
@@ -21,16 +22,21 @@ public class barrierTrigger : MonoBehaviour
         {
             if (barrierRB != null)
             {
-                barrierRB.gravityScale = 2;
+                StartCoroutine(barrierFall());
             }
         }
     }
 
-    public IEnumerator raiseBarrier()
+    public void raiseBarrier()
     {
         barrierAnim.enabled = true;
         barrierAnim.SetTrigger("barrierRaise");
-        yield return new WaitForSeconds(raiseBarrierAnimTime + 0.5f);
-        Destroy(barrier);
+    }
+
+    private IEnumerator barrierFall()
+    {
+        barrierRB.gravityScale = 2;
+        yield return new WaitForSeconds(2.0f);
+        barrierRB.sharedMaterial = solidMaterial;
     }
 }

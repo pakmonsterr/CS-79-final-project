@@ -16,13 +16,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Projectiles
   - Water
   - UI
   - Ground
   - Slime Layer 1
   - Slime Layer 2
-  - 
+  - Camera Boundaries
   - 
   - 
   - 

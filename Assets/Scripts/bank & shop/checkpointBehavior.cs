@@ -25,6 +25,14 @@ public class checkpointBehavior : MonoBehaviour
         if(collider.gameObject.CompareTag("Player") && !checkpointReached)
         {
             checkpointReached = true;
+            if (Location == "Bank")
+            {
+                persistentData.Instance.bankCheckpoint = true;
+            }
+            if (Location == "Shop")
+            {
+                persistentData.Instance.shopCheckpoint = true;
+            }
             anim.SetTrigger("Checkpoint");
         }
     }

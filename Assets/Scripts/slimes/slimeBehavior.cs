@@ -43,12 +43,13 @@ public class slimeBehavior : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider)
 	{
-        if(collider.gameObject.CompareTag("Projectile"))
+        if (collider.gameObject.CompareTag("Projectile"))
         {
             StartCoroutine(slimeShot());
         }
-        if(collider.gameObject.CompareTag("slimeBoundary") || collider.gameObject.CompareTag("Player"));
+        else if(collider.gameObject.CompareTag("slimeBoundary") || collider.gameObject.CompareTag("Player"));
         {  
+                     
             if (slimeRB.velocity.x > 0 && !isFacingLeft)
             {
                 isFacingLeft = true;
