@@ -4534,7 +4534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939901238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5401077, y: -0.80003023, z: 0}
+  m_LocalPosition: {x: 0.5401077, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4846,8 +4846,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Press space \nto enter\nShop"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7f513b037ca3ec24c956e87c132d6ac6, type: 2}
-  m_sharedMaterial: {fileID: -1778196619039707751, guid: 7f513b037ca3ec24c956e87c132d6ac6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 285cb76533a09894d8ed096001a8bbd5, type: 2}
+  m_sharedMaterial: {fileID: -4004542190907231058, guid: 285cb76533a09894d8ed096001a8bbd5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4871,8 +4871,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
