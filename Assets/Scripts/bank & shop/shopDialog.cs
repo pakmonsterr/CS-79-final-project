@@ -37,7 +37,6 @@ void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            persistentData.Instance.bankVisited = true;
             persistentData.Instance.shopVisited = true;
             SceneManager.LoadScene("Level 1");
         }

@@ -23,13 +23,13 @@ public class levelHandler : MonoBehaviour
         }
 
         // REMOVE FOR FINAL (only for dev purposes while emmet works on bank)
-        if (persistentData.Instance.bankVisited)
+        /*if (persistentData.Instance.bankVisited)
         {
             SceneManager.LoadScene("Level 1");
         }
         if (persistentData.Instance.shopVisited)
         {
             SceneManager.LoadScene("Level 1");
-        }
+        }*/
     }
 }

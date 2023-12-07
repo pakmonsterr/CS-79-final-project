@@ -24,6 +24,7 @@ public class playerHandler : MonoBehaviour
     {
         if (persistentData.Instance.bankVisited)
         {
+            Debug.Log("bank visited");
             Player.transform.position = bankPlayerSpawn.position;
             persistentData.Instance.bankVisited = false;
             BarrierTrigger.raiseBarrier();
