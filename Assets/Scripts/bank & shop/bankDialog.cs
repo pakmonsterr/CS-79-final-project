@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class bankDialog : MonoBehaviour
 {
+    private bool inConfirmationState;
     public string[] dialog; // The dialog text
     private int index; // The current index of the dialog
     private bool inChoiceState; // Whether the user is in the choice state or not
@@ -32,34 +36,39 @@ public class bankDialog : MonoBehaviour
         ShowDialog();
     }
 
-    // Update is called once per frame
-    void Update()
+void Update()
+{
+    if (inConfirmationState)
     {
-        if (inChoiceState)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                choiceIndex = (choiceIndex - 1 + choices.Length) % choices.Length;
-                HighlightChoice(); // Highlight current choice
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                choiceIndex = (choiceIndex + 1) % choices.Length;
-                HighlightChoice(); // Highlight current choice
-            }
-            else if (Input.GetKeyDown(KeyCode.Space))
-            {
-                DialogTextMeshPro.text = "You chose " + choices[choiceIndex]; // Confirm choice
-                inChoiceState = false; // Exit choice state
-                // Perform any additional logic needed after making a choice
-            }
+            SceneManager.LoadScene("Level Transition");
+        }
+    }
+    else if (inChoiceState)
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            choiceIndex = (choiceIndex - 1 + choices.Length) % choices.Length;
+            HighlightChoice(); // Highlight current choice
+        }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            choiceIndex = (choiceIndex + 1) % choices.Length;
+            HighlightChoice(); // Highlight current choice
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            NextDialog();
+            DialogTextMeshPro.text = "You chose " + choices[choiceIndex] + "\n[spacebar to exit]"; // Confirm choice
+            inChoiceState = false; // Exit choice state
+            inConfirmationState = true;
         }
     }
-
+    else if (Input.GetKeyDown(KeyCode.Space))
+    {
+        NextDialog();
+    }
+}
     void ShowDialog()
     {
         if (index < dialog.Length)
@@ -76,7 +85,8 @@ public class bankDialog : MonoBehaviour
 
     void DisplayChoices()
     {
-        ChoiceTextMeshPro.text = string.Join("\n", choices); // Display all choices
+        string cardChoicePrompt = "Choose your card type:";
+        ChoiceTextMeshPro.text = cardChoicePrompt + "\n" + string.Join("\n", choices); // Display all choices
         HighlightChoice(); // Highlight the first choice by default
     }
 
@@ -87,7 +97,7 @@ public class bankDialog : MonoBehaviour
         // Split the text into lines
         string[] lines = text.Split('\n');
         // Highlight the current choice
-        lines[choiceIndex] = "<color=red><u>" + lines[choiceIndex] + "</u></color>";
+        lines[choiceIndex + 1] = "<color=red><u>" + lines[choiceIndex + 1] + "</u></color>"; // Add 1 to choiceIndex to skip the prompt
         // Join the lines back together
         ChoiceTextMeshPro.text = string.Join("\n", lines);
     }
