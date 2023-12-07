@@ -64,6 +64,7 @@ void Update()
             DialogTextMeshPro.text = "You chose " + choices[choiceIndex] + "\n[spacebar to exit]"; // Confirm choice
             inChoiceState = false; // Exit choice state
             inConfirmationState = true;
+            persistentData.Instance.cardType = choices[choiceIndex];
         }
     }
     else if (Input.GetKeyDown(KeyCode.Space))

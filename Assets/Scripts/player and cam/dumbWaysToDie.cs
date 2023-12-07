@@ -65,7 +65,7 @@ public class dumbWaysToDie : MonoBehaviour
             persistentData.Instance.remainingLives -= 1;
 
             PlayerControls.playerRB.velocity = Vector3.zero;
-            PlayerControls.playerRB.AddForce(new Vector2(0, PlayerControls.jumpForce * 10));
+            PlayerControls.playerRB.AddForce(new Vector2(0, persistentData.Instance.jumpForce * 10));
             
             spikeDeath = true; 
             capCollider.isTrigger = true;
@@ -78,7 +78,7 @@ public class dumbWaysToDie : MonoBehaviour
             persistentData.Instance.remainingLives -= 1;
 
             PlayerControls.playerRB.velocity = Vector3.zero;
-            PlayerControls.playerRB.AddForce(new Vector2(PlayerControls.jumpForce * -4, PlayerControls.jumpForce * 7));
+            PlayerControls.playerRB.AddForce(new Vector2(persistentData.Instance.jumpForce * -4, persistentData.Instance.jumpForce * 7));
         }
     }
 

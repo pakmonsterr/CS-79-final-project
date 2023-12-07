@@ -59,6 +59,28 @@ void Update()
             DialogTextMeshPro.text = "Your purchase " + choices[choiceIndex] + "\n[spacebar to exit]"; // Confirm choice
             inChoiceState = false; // Exit choice state
             inConfirmationState = true;
+            if (choices[choiceIndex].Contains("Speed Coffee"))
+            {
+                persistentData.Instance.moveSpeed += 4;
+                if ((persistentData.Instance.playerCoins - 5) < 0)
+                {
+                    Debug.Log("not enough coins");
+                    if (persistentData.Instance.cardType == "Credit")
+                    {
+                        persistentData.Instance.playerCoins -= 5;
+                    }
+                }
+                else 
+                {
+                    persistentData.Instance.playerCoins -= 5;
+                }
+                
+            }
+            else if (choices[choiceIndex].Contains("Jump Potion"))
+            {
+                persistentData.Instance.jumpForce += 15;
+                persistentData.Instance.playerCoins -= 4;
+            }
         }
     }
     else if (Input.GetKeyDown(KeyCode.Space))

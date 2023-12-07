@@ -18,13 +18,20 @@ public class playerHandler : MonoBehaviour
     [SerializeField] private GameObject Player;
     [SerializeField] private barrierTrigger BarrierTrigger;
 
+    [SerializeField] private Sprite cardSprite;
+    [SerializeField] private GameObject coinIcon;
+
     private static persistentData PersistentData;
     
     void Start() 
     {
         if (persistentData.Instance.bankVisited)
         {
-            Debug.Log("bank visited");
+            if (persistentData.Instance.cardType != "none")
+            {
+                coinIcon.GetComponent<SpriteRenderer>().sprite = cardSprite;
+                coinIcon.transform.position = new Vector3 (coinIcon.transform.position.x, 3.35f, coinIcon.transform.position.z);
+            }
             Player.transform.position = bankPlayerSpawn.position;
             persistentData.Instance.bankVisited = false;
             BarrierTrigger.raiseBarrier();

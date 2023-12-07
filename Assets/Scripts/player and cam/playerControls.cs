@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class playerControls : MonoBehaviour
 {
+    private static persistentData PersistentData;
 
     // inputs to speed & jump force, ref to groundCheck script
-    [SerializeField] private float moveSpeed;
-    public float jumpForce;
     [SerializeField] private groundCheck GroundCheck;
 
     // other player stuff
@@ -70,12 +69,12 @@ public class playerControls : MonoBehaviour
         {
             // horizontal movement
             horizontalInput = Input.GetAxis("Horizontal");
-            playerRB.velocity = new Vector2(horizontalInput * moveSpeed, playerRB.velocity.y);
+            playerRB.velocity = new Vector2(horizontalInput * persistentData.Instance.moveSpeed, playerRB.velocity.y);
 
             // jump mechanics
             if ((Input.GetKeyDown("up") || Input.GetKeyDown("w")) && GroundCheck.grounded)
             {
-                playerRB.AddForce(new Vector2(playerRB.velocity.x, jumpForce * 10));
+                playerRB.AddForce(new Vector2(playerRB.velocity.x, persistentData.Instance.jumpForce * 10));
             }
 
             if (Input.GetKeyDown("space") && (shootCooldownTimer > shootCooldown) && !bankEnterTrigger.atDoor && !shopEnterTrigger.atDoor)

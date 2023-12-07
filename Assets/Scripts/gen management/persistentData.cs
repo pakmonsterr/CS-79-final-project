@@ -14,6 +14,8 @@ public class persistentData : MonoBehaviour
     public bool shopVisited;
     public bool bankCheckpoint;
     public bool shopCheckpoint;
+    public string cardType;
+    public float moveSpeed, jumpForce;
 
     // coin & slime collection data
     public Dictionary<string, bool> coinCollection = new Dictionary<string, bool>();
