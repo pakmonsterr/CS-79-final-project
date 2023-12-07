@@ -1,5 +1,7 @@
 # Financial Literacy 2D Platformer
 
+## [Click Here for a Demo]()
+
 ## Game Overview
 Welcome to our CS 79 final project! This 2D platformer is designed to make financial literacy engaging and interactive. Each level introduces a new financial concept, from understanding credit and debit cards to investment strategies, all through classic pixel-art adventure gameplay.
 
