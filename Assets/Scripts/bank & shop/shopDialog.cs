@@ -25,7 +25,8 @@ public class shopDialog : MonoBehaviour
         index = 0;
         inChoiceState = false;
         dialog = new string[] {
-            "Welcome to the store! What can I offer you today, traveler?",
+            "Welcome to the shop, brave traveler.",
+            "What would you like to purchase for your journey? Choose wisely...",
             "Our items:"
         };
         ShowDialog();
