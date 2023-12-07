@@ -14,6 +14,7 @@ public class bankDialog : MonoBehaviour
     private bool inChoiceState; // Whether the user is in the choice state or not
     private string[] choices = { "Credit", "Debit" }; // The choices
     private int choiceIndex; // The current index of the choice
+    private static persistentData PersistentData;
 
     [SerializeField] private TextMeshProUGUI DialogTextMeshPro; // The TextMeshProUGUI for displaying dialog
     [SerializeField] private TextMeshProUGUI ChoiceTextMeshPro; // The TextMeshProUGUI for displaying choices
@@ -42,7 +43,8 @@ void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Level Transition");
+            persistentData.Instance.bankVisited = true;
+            SceneManager.LoadScene("Level 1");
         }
     }
     else if (inChoiceState)
