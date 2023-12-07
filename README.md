@@ -1,4 +1,4 @@
-# Financial Literacy 2D Platformer
+# CS79 Final Project: Financial Literacy 2D Platformer
 
 ## [Click Here for a Demo]()
 
