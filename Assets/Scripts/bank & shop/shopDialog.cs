@@ -8,13 +8,13 @@ using UnityEngine.SceneManagement;
 
 public class shopDialog : MonoBehaviour
 {
-    private static persistentData PersistentData;
     private bool inConfirmationState;
     public string[] dialog; // The dialog text
     private int index; // The current index of the dialog
     private bool inChoiceState; // Whether the user is in the choice state or not
-    private string[] choices = { "Speed Coffee", "Jump Potion", "Mystery Outfit" }; // The choices
+    private string[] choices = { "Speed Coffee: 5 coins", "Jump Potion: 4 coins", "Mystery Outfit: 5 coins" }; // The choices
     private int choiceIndex; // The current index of the choice
+    private static persistentData PersistentData;
 
     [SerializeField] private TextMeshProUGUI DialogTextMeshPro; // The TextMeshProUGUI for displaying dialog
     [SerializeField] private TextMeshProUGUI ChoiceTextMeshPro; // The TextMeshProUGUI for displaying choices
